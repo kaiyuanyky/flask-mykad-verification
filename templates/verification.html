@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <title>Verification - MyKad Verification Web Service</title>
+
+      <link rel="icon" href="{{ url_for('static', filename='logo/MyKad.png') }}">
+      <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+      <link rel="stylesheet" href="{{ url_for('static', filename='css/swiper.css') }}">
+      <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css"/>
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css">
+      <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.0.0/css/all.css">
+   </head>
+
+   <body>
+      <div id="loader">
+         <div class="loader-anim"></div>
+      </div>
+      {% include 'header.html' %}
+
+      <!-- Modal (Error Message) -->
+      <div class="modal fade" id="errorModal" tabindex="-1" role="dialog" aria-labelledby="errorModalLabel" aria-hidden="true">
+         <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+               <div class="modal-header">
+                  <h5 class="modal-title" id="errorModalLabel">Oops!</h5>
+                  <a class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></a>
+               </div>
+               <div class="modal-body">
+                  Please select a set of MyKad images first.
+               </div>
+            </div>
+         </div>
+      </div>
+
+      <div class="p-5 flex-column align-items-center justify-content-center text-center">
+         <h1 class="mb-5">Select MyKad images for Verification</h1>
+
+         <div class="mykad-block my-3 p-1 secondary-color">
+            <label class="label-header mt-3 mb-2 py-1">MyKad Images</label>
+				<div class="swiper mySwiperContainer mykad-container mt-3 px-lg-5 px-4">
+					<div class="swiper-wrapper mt-2 mb-5">
+                  {% from 'data.jinja' import images %}
+                  {% for img in images %}
+                     <div class="swiper-slide">	
+                        <div class="my-4 flex-col content">
+                           <img class="p-2 mykad-img disable-drag" src="{{ url_for('static', filename=img.front) }}">
+                           <img class="p-2 mykad-img disable-drag" src="{{ url_for('static', filename=img.rear) }}">
+                        </div>
+                        <div class="text-white personal-info">
+                           <table>
+                              <tr>
+                                 <td class="col-md-3">IC Number</td>
+                                 <td>:</td>
+                                 <td class="col-md-9 info1" value="{{img.icNum}}">{{img.icNum}}</td>
+                              </tr>
+                              <tr>
+                                 <td class="col-md-3">Name</td>
+                                 <td>:</td>
+                                 <td class="col-md-9 info1" value="{{img.name}}">{{img.name}}</td>
+                              </tr>
+                              <tr>
+                                 <td class="col-md-3">Citizen</td>
+                                 <td>:</td>
+                                 <td class="col-md-9 info1" value="{{img.citizen}}">{{img.citizen}}</td>
+                              </tr>
+                              <tr>
+                                 <td class="col-md-3">Address</td>
+                                 <td>:</td>
+                                 <td class="col-md-9 info1" value="{{img.address}}">{{img.address}}</td>
+                              </tr>
+                           </table>
+                        </div>
+
+                        <div class="round-check-content text-center py-2 w-100">
+                           <div class="flex-col round-check" front-path=".{{ url_for('static', filename=img.front) }}" rear-path=".{{ url_for('static', filename=img.rear) }}">
+                              <div class="fa"></div>
+                           </div>
+                        </div>
+                     </div>
+                  {% endfor %}
+					</div>
+
+					<div class="swiper-button-prev swiper-button-prev-form swiper-button-prev-overwrite"></div>
+					<div class="swiper-button-next swiper-button-next-form swiper-button-next-overwrite"></div>
+					<div class="swiper-pagination"></div>
+				</div>
+			</div>
+
+         <form action="/result" id="verifyForm" onsubmit="return validate()" method="POST" enctype="multipart/form-data">
+            <input type="text" id="front" name="front" value="" hidden/>
+            <input type="text" id="rear" name="rear" value="" hidden/>
+            <input type="submit" class="btn-submit mt-5 mb-3 px-5 py-3" value="Verify MyKad"/>
+         </form>
+      </div>
+      
+      <a class="btn-up fa fa-arrow-up" role="button" onclick="scrollUp()"></a>
+
+      <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+      <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+      <script src="{{ url_for('static', filename='js/loader.js') }}"></script>
+      <script src="{{ url_for('static', filename='js/get-image.js') }}"></script>
+   </body>
+</html>

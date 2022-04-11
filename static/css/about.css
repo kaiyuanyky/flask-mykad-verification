@@ -1,0 +1,172 @@
+#about {
+    position: relative;
+    width: 100%;
+    height: 88vh;
+    background: url("../bg/bg.jpg") top center;
+    background-size: cover;
+}
+
+#about:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: rgba(255, 255, 255, 0.8);
+}
+
+#about .container {
+    padding-top: 80px;
+}
+
+#about h1 {
+    margin: 0;
+    color: #114166;
+    line-height: 72px;
+    font-size: 56px;
+    font-weight: 700;
+    font-family: "Poppins", sans-serif;
+}
+
+#about h2 {
+    color: #5e5e5e;
+    margin: 10px 0 0 0;
+    font-size: 22px;
+}
+
+#about .icon-boxes {
+    margin-top: 100px;
+}
+
+#about .icon-box {
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+    padding: 50px 30px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 29px 0 rgba(18, 66, 101, 0.08);
+    transition: all 0.2s ease-in-out;
+}
+
+#about .icon-box .title {
+    margin-bottom: 15px;
+    font-size: 18px;
+    font-weight: 700;
+}
+
+#about .icon-box .title a {
+    color: #124265;
+    transition: 0.3s;
+}
+
+.description {
+    font-size: 15px;
+    line-height: 28px;
+    margin-bottom: 0;
+    text-align: justify;
+}
+
+#about .icon-box .icon {
+    color: #2487ce;
+    font-size: 36px;
+    padding-top: 10px;
+    margin-bottom: 20px;
+    display: inline-block;
+    transition: all 0.3s ease-in-out;
+}
+
+#about .icon-box:hover {
+    transform: scale(1.05);
+}
+
+#about .icon-box:hover .title a {
+    color: #2487ce;
+}
+
+.section-gap {
+    padding: 180px 0;
+}
+
+.img-container {
+    margin: 0 auto;
+    min-width: 100%;
+}
+
+.img-container img {
+    display: block;
+    margin: auto;
+    top: 50%;
+    left: 50%;
+    width: 480px;
+}
+
+.section-title h1 {
+    font-size: 38px;
+}
+
+.section-title .description {
+    font-size: 20px;
+    text-align: justify;
+}
+
+.fa-brands {
+    font-size: 70px;
+}
+
+@media (min-width: 1024px) {
+    #about {
+        background-attachment: fixed;
+    }
+}
+
+@media (max-height: 800px) {
+    #about {
+        height: auto;
+    }
+}
+
+@media (max-width: 992px) {
+    #about {
+        height: auto;
+    }
+    #about h1 {
+        font-size: 28px;
+        line-height: 36px;
+    }
+    #about h2 {
+        font-size: 18px;
+        line-height: 24px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .img-container img {
+        width: 280px;
+    }
+
+    .fa-brands {
+        font-size: 50px;
+    }
+}
+
+/*
+#about .btn-get-started {
+    font-family: "Poppins", sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    letter-spacing: 0.5px;
+    display: inline-block;
+    padding: 14px 50px;
+    border-radius: 5px;
+    transition: 0.5s;
+    margin-top: 30px;
+    color: #fff;
+    background: #2487ce;
+}
+
+#about .btn-get-started:hover {
+    background: #3194db;
+}
+*/

@@ -1,0 +1,34 @@
+<!-- Header Navigation -->
+<nav class="navbar navbar-expand-lg navbar-dark primary-color static-top">
+   <div class="container">
+      <a class="navbar-brand" href="/">
+         <img class="logo disable-drag" src="{{ url_for('static', filename='logo/MyKad.png') }}">
+      </a>
+
+      <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+         <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+         <ul class="navbar-nav ms-auto">
+            <li class="nav-item active">
+               <a class="nav-link px-4 {{'active' if request.path == '/'}}" href="/"><span class="py-2">Home</span></a>
+            </li>
+            <li class="nav-item active">
+               <a class="nav-link px-4 {{'active' if request.path == '/verification'}}" href="{{ url_for('verification') }}"><span class="py-2">Verification</span></a>
+            </li>
+            {% if request.path == '/result' %}
+               <li class="nav-item">
+                  <a class="nav-link px-4 active" href="{{ url_for('result') }}"><span class="py-2">Result</span></a>
+               </li>
+            {% endif %}
+            <li class="nav-item">
+               <a class="nav-link px-4 {{'active' if request.path == '/statistics'}}" href="{{ url_for('statistics') }}"><span class="py-2">Statistics</span></a>
+            </li>
+            <li class="nav-item">
+               <a class="nav-link px-4 {{'active' if request.path == '/about'}}" href="{{ url_for('about') }}"><span class="py-2">About</span></a>
+            </li>
+         </ul>
+      </div>
+   </div>
+</nav>

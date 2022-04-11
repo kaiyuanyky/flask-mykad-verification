@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Result - MyKad Verification Web Service</title>
+
+        <link rel="icon" href="{{ url_for('static', filename='logo/MyKad.png') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.0.0/css/all.css">
+    </head>
+    <body>
+        <div id="loader">
+            <div class="loader-anim"></div>
+        </div>
+        {% include 'header.html' %}
+        
+        <div class="verification-data" hidden>{{data}}</div>
+
+        <!-- Modal (Landmark Detection) -->
+        <div class="modal fade" id="landmarkModal" tabindex="-1" role="dialog" aria-labelledby="landmarkModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="landmarkModalLabel">Result for Landmark Detection</h5>
+                    <a class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></a>
+                </div>
+                <div class="modal-body landmark-data"></div>
+            </div>
+            </div>
+        </div>
+
+        <!-- Modal (Security Feature Detection) -->
+        <div class="modal fade" id="securityModal" tabindex="-1" role="dialog" aria-labelledby="securityModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="securityModalLabel">Result for Security Feature Detection</h5>
+                    <a class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></a>
+                </div>
+                <div class="modal-body security-data"></div>
+            </div>
+            </div>
+        </div>
+
+        <!-- Modal (Fraud Detection) -->
+        <div class="modal fade" id="fraudModal" tabindex="-1" role="dialog" aria-labelledby="fraudModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="fraudModalLabel">Result for Fraud Detection</h5>
+                    <a class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></a>
+                </div>
+                <div class="modal-body fraud-data"></div>
+            </div>
+            </div>
+        </div>
+
+        <!-- Modal (Summary Result) -->
+        <div class="modal fade" id="resultModal" tabindex="-1" role="dialog" aria-labelledby="resultModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="resultModalLabel">
+                        Overall Result of Verification&nbsp;
+                        <label class="switch">
+                            <input id="resultSwitch" type="checkbox" checked>
+                            <span class="slider round"></span>
+                        </label>
+                    </h5>
+                    <a class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></a>
+                </div>
+                <div class="modal-body result-data"></div>
+            </div>
+            </div>
+        </div>
+
+        <div class="p-5 flex-column align-items-center justify-content-center text-center">
+            <div class="mykad-block my-3 p-1 secondary-color">
+                <label class="label-header my-3 py-1">Verification Result</label>
+                <div class="mykad-container pt-2 px-lg-5 px-4 pb-3">
+                    <div class="my-4 flex-col content">
+                        <img class="p-2 mykad-img disable-drag" src="{{ url_for('static', filename='final-mykad-output/front.jpg') }}">
+                        <img class="p-2 mykad-img disable-drag" src="{{ url_for('static', filename='final-mykad-output/rear.jpg') }}">
+                    </div>
+
+                    <button type="button" class="mx-2 mt-2 mb-4 p-2 btn-primary btn-result" data-toggle="modal" data-target="#landmarkModal">
+                        <i class="fa-solid fa-location-dot"></i>
+                        Landmark Detection
+                    </button>
+                    <button type="button" class="mx-2 mt-2 mb-4 p-2 btn-primary btn-result" data-toggle="modal" data-target="#securityModal">
+                        <i class="fa-solid fa-shield-blank"></i>
+                        Security Feature Detection
+                    </button>
+                    <button type="button" class="mx-2 mt-2 mb-4 p-2 btn-primary btn-result" data-toggle="modal" data-target="#fraudModal">
+                        <i class="fa-solid fa-user-secret"></i>
+                        Fraud Detection
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="w-100 text-center mb-3 pb-5">
+            <button type="button" class="btn-submit px-5 py-3" data-toggle="modal" data-target="#resultModal">View Result</button>
+        </div>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+        <script src="{{ url_for('static', filename='js/loader.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/result.js') }}"></script>
+    </body>
+</html>
