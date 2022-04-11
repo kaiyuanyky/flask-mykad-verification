@@ -4,7 +4,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1">
 
       {% if errorCode == '404' %}<title>{{errorCode}} Page Not Found</title>{% endif %}
-      {% if errorCode == '400' %}<title>{{errorCode}} Invalid Request</title>{% endif %}
+      {% if errorCode == '400' %}<title>{{errorCode}} Bad Request</title>{% endif %}
 
       <link rel="icon" href="{{ url_for('static', filename='logo/MyKad.png') }}">
       <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
@@ -33,7 +33,7 @@
                   {% endif %}
 
                   {% if errorCode == '400' %}
-                     <h1>Invalid <br> Request</h1>
+                     <h1>Bad <br> Request</h1>
                      <h2>Oops! The input was not found. You may proceed to select a set of MyKad images first.</h2>
                      <div class="pb-5">
                         <a href="/verification" class="btn-get-started">Select Images</a>
