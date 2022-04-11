@@ -1,4 +1,4 @@
-# Flask MyKad Verification
+# MyKad Verification Web Service
 A web service to verify the MyKad document by using the multi-factor algorithm that is developed using Python. 
 The web service is developed using Flask, and it is demonstrated on the web application.
 
