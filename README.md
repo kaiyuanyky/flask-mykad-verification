@@ -12,16 +12,22 @@ The web service is developed using Flask, and it is demonstrated on the web appl
 2. To improve the accuracy of verification using this multi-factor verification.
 
 ## How to Install
-1. Download the source code.
-2. Open the source code folder in **Visual Studio Code**.
-3. Install the packages using the following command:
+1. Download the source code and extract it to your working folder manually.
+2. Alternatively, clone this repository into your working folder using the following command.
+
+```
+git clone https://github.com/kaiyuanyky/flask-mykad-verification.git
+```
+
+3. Open the source code folder in **Visual Studio Code**.
+4. Install the required packages using the following command:
 
 ```python
 pip install -r requirements.txt
 ```
 
 ## How to Run
-1. In your current working directory, enter the following command:
+1. In your current working folder, enter the following command:
 
 ```python
 py main.py
@@ -29,7 +35,7 @@ py main.py
 
 ## How to Use
 1. Open the URL [http://127.0.0.1:5000](http://127.0.0.1:5000) in your browser to access the web service locally.
-2. Alternatively, click [here](https://mykad.herokuapp.com/) to access web service directly.
+2. Alternatively, click [here](https://mykad.herokuapp.com/) to access the web service directly.
 
 ## Technological Background
 - OpenCV
