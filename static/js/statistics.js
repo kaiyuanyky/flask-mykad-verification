@@ -20,9 +20,9 @@ var thresholds_label = ["Blurriness", "Individual Matching of Landmark", "Overal
 var thresholds_value = [25.00, 20.00, 50.00, 50.00, 50.00];
 
 var security_features_label = ["Microprint Existence", "Microprint Matching"]
-var security_features_value = [true, true]
-var frauds_label = ["Face Existence", "MyKads are a Pair", "Front NRIC is Valid", "Rear NRIC is Valid", "Name has Value", "Address has Value", "Front MyKad is not blurred", "Rear MyKad is not blurred"]
-var frauds_value = [true, true, true, true, true, true, true, true]
+var security_features_value = [100.00, 54.44]
+var frauds_label = ["Face Existence", "MyKads are a Pair (N/A)", "Front NRIC is Valid", "Rear NRIC is Valid", "Name has Value", "Address has Value", "Front MyKad is not blurred", "Rear MyKad is not blurred"]
+var frauds_value = [100.00, "-", 66.67, 77.78, 100.00, 100.00, 66.67, 44.44]
 
 function chartLandmarkTypeNumber() {
     new Chart("chart-landmark-type-number", {
@@ -212,7 +212,7 @@ function chartLandmarkDetection() {
 
 function chartSecurityFeatureDetection() {
     new Chart("chart-security-feature-detection", {
-        type: "doughnut",
+        type: "bar",
         data: {
             labels: this.security_features_label,
             datasets: [{
@@ -221,11 +221,19 @@ function chartSecurityFeatureDetection() {
             }]
         },
         options: {
-            legend: {display: true},
+            legend: {display: false},
             title: {
                 display: true,
                 fontSize: 36,
                 text: "Security Feature Detection"
+            },
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        suggestedMin: 0,
+                        suggestedMax: 100
+                    }
+                }]
             }
         }
     });
@@ -233,7 +241,7 @@ function chartSecurityFeatureDetection() {
 
 function chartFraudDetection() {
     new Chart("chart-fraud-detection", {
-        type: "doughnut",
+        type: "bar",
         data: {
             labels: this.frauds_label,
             datasets: [{
@@ -242,11 +250,19 @@ function chartFraudDetection() {
             }]
         },
         options: {
-            legend: {display: true},
+            legend: {display: false},
             title: {
                 display: true,
                 fontSize: 36,
                 text: "Fraud Detection"
+            },
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        suggestedMin: 0,
+                        suggestedMax: 100
+                    }
+                }]
             }
         }
     });
@@ -273,7 +289,7 @@ function chartOverallVerification() {
             title: {
                 display: true,
                 fontSize: 36,
-                text: "Average Verification Score"
+                text: "Overall Verification Score"
             },
             scale: {
                 ticks: {
